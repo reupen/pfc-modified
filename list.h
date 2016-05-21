@@ -618,7 +618,7 @@ template<typename T,typename P>
 class list_const_permutation_t : public list_base_const_t<T>
 {
 public:
-	inline list_const_permutation_t(const list_base_const_t<T> & p_list,P p_permutation) : m_list(p_list), m_permutation(p_permutation) {}
+	inline list_const_permutation_t(const list_base_const_t<T> & p_list,P p_permutation) : m_permutation(p_permutation), m_list(p_list) {}
 	t_size get_count() const {return m_list.get_count();}
 	void get_item_ex(T & p_out,t_size n) const {m_list.get_item_ex(p_out,m_permutation[n]);}
 private:

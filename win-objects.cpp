@@ -156,7 +156,7 @@ void CClipboardOpenScope::Close() {
 }
 
 
-CGlobalLockScope::CGlobalLockScope(HGLOBAL p_handle) : m_handle(p_handle), m_ptr(GlobalLock(p_handle)) {
+CGlobalLockScope::CGlobalLockScope(HGLOBAL p_handle) : m_ptr(GlobalLock(p_handle)), m_handle(p_handle) {
 	if (m_ptr == NULL) throw std::bad_alloc();
 }
 CGlobalLockScope::~CGlobalLockScope() {

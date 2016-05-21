@@ -17,7 +17,7 @@ namespace pfc {
 		~array_staticsize_t() {release_();}
 
 		//! Copy constructor nonfunctional when data type is not copyable.
-		array_staticsize_t(const t_self & p_source) : m_size(0), m_array(NULL) {
+		array_staticsize_t(const t_self & p_source) : m_array(NULL), m_size(0) {
 			*this = p_source;
 		}
 

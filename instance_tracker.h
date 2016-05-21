@@ -21,8 +21,8 @@ namespace pfc {
 	template<typename t_object,instance_tracker_server_t<t_object> & p_server>
 	class instance_tracker_client_t {
 	public:
-		instance_tracker_client_t(t_object* p_ptr) : m_ptr(NULL), m_added(false) {initialize(p_ptr);}
-		instance_tracker_client_t() : m_ptr(NULL), m_added(false) {}
+		instance_tracker_client_t(t_object* p_ptr) : m_added(false), m_ptr(NULL) {initialize(p_ptr);}
+		instance_tracker_client_t() : m_added(false), m_ptr(NULL) {}
 
 		void initialize(t_object * p_ptr) {
 			uninitialize();
