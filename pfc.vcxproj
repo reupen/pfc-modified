@@ -133,10 +133,10 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pfc.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
       <AdditionalOptions>/Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -157,12 +157,12 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pfc.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>/Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -186,12 +186,14 @@
     <ClInclude Include="chain_list_v2.h" />
     <ClInclude Include="com_ptr_t.h" />
     <ClInclude Include="cpuid.h" />
+    <ClInclude Include="event.h" />
     <ClInclude Include="filehandle.h" />
     <ClInclude Include="guid.h" />
     <ClInclude Include="instance_tracker.h" />
     <ClInclude Include="int_types.h" />
     <ClInclude Include="iterators.h" />
     <ClInclude Include="list.h" />
+    <ClInclude Include="lockless.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="memalign.h" />
     <ClInclude Include="nix-objects.h" />
@@ -199,24 +201,31 @@
     <ClInclude Include="other.h" />
     <ClInclude Include="pathUtils.h" />
     <ClInclude Include="pfc.h" />
+    <ClInclude Include="pocket_char_ops.h" />
+    <ClInclude Include="pool.h" />
     <ClInclude Include="pp-gettickcount.h" />
     <ClInclude Include="pp-winapi.h" />
     <ClInclude Include="primitives.h" />
     <ClInclude Include="primitives_part2.h" />
+    <ClInclude Include="ptrholder.h" />
     <ClInclude Include="ptr_list.h" />
     <ClInclude Include="rcptr.h" />
     <ClInclude Include="ref_counter.h" />
     <ClInclude Include="sort.h" />
+    <ClInclude Include="splitString.h" />
     <ClInclude Include="string8_impl.h" />
     <ClInclude Include="string_base.h" />
     <ClInclude Include="string_conv.h" />
     <ClInclude Include="string_list.h" />
     <ClInclude Include="stringNew.h" />
+    <ClInclude Include="suppress_fb2k_hooks.h" />
     <ClInclude Include="syncd_storage.h" />
+    <ClInclude Include="synchro.h" />
     <ClInclude Include="synchro_win.h" />
     <ClInclude Include="threads.h" />
     <ClInclude Include="timers.h" />
     <ClInclude Include="traits.h" />
+    <ClInclude Include="wait_queue.h" />
     <ClInclude Include="wildcard.h" />
     <ClInclude Include="win-objects.h" />
   </ItemGroup>
