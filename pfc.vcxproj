@@ -214,6 +214,7 @@
     <ClInclude Include="primitives_part2.h" />
     <ClInclude Include="ptrholder.h" />
     <ClInclude Include="ptr_list.h" />
+    <ClInclude Include="range_based_for.h" />
     <ClInclude Include="rcptr.h" />
     <ClInclude Include="ref_counter.h" />
     <ClInclude Include="sort.h" />
