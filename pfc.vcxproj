@@ -175,6 +175,7 @@
     <ClInclude Include="alloc.h" />
     <ClInclude Include="array.h" />
     <ClInclude Include="audio_sample.h" />
+    <ClInclude Include="autoref.h" />
     <ClInclude Include="avltree.h" />
     <ClInclude Include="base64.h" />
     <ClInclude Include="binary_search.h" />
@@ -183,7 +184,7 @@
     <ClInclude Include="bit_array_impl_part2.h" />
     <ClInclude Include="bsearch.h" />
     <ClInclude Include="bsearch_inline.h" />
-    <ClInclude Include="byte_order_helper.h" />
+    <ClInclude Include="byte_order.h" />
     <ClInclude Include="chain_list_v2.h" />
     <ClInclude Include="cmd_thread.h" />
     <ClInclude Include="com_ptr_t.h" />
@@ -199,9 +200,11 @@
     <ClInclude Include="map.h" />
     <ClInclude Include="memalign.h" />
     <ClInclude Include="nix-objects.h" />
+    <ClInclude Include="notifyList.h" />
     <ClInclude Include="order_helper.h" />
     <ClInclude Include="other.h" />
     <ClInclude Include="pathUtils.h" />
+    <ClInclude Include="pfc-fb2k-hooks.h" />
     <ClInclude Include="pfc.h" />
     <ClInclude Include="pocket_char_ops.h" />
     <ClInclude Include="pool.h" />
@@ -229,6 +232,7 @@
     <ClInclude Include="timers.h" />
     <ClInclude Include="traits.h" />
     <ClInclude Include="wait_queue.h" />
+    <ClInclude Include="weakRef.h" />
     <ClInclude Include="wildcard.h" />
     <ClInclude Include="win-objects.h" />
   </ItemGroup>
@@ -263,7 +267,12 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <ClCompile Include="nix-objects.cpp" />
+    <ClCompile Include="nix-objects.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="other.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -277,6 +286,12 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="pathUtils.cpp" />
+    <ClCompile Include="pfc-fb2k-hooks.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="printf.cpp" />
     <ClCompile Include="selftest.cpp" />
     <ClCompile Include="sort.cpp">
