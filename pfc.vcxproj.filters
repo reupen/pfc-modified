@@ -261,7 +261,7 @@
     <ClInclude Include="suppress_fb2k_hooks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="range_based_for.h">
+    <ClInclude Include="stdsort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
