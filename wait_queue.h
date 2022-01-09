@@ -9,15 +9,11 @@ namespace pfc {
 	class waitQueue {
 	public:
 		waitQueue() : m_eof() {}
-
-		void put( obj_t const & obj ) {
+		
+		template<typename arg_t>
+		void put( arg_t && obj ) {
 			mutexScope guard( m_mutex );
-			m_list.push_back( obj );
-			if ( m_list.size() == 1 ) m_canRead.set_state( true );
-		}
-		void put( obj_t && obj ) {
-			mutexScope guard( m_mutex );
-			m_list.push_back( std::move(obj) );
+			m_list.push_back( std::forward<arg_t>(obj) );
 			if ( m_list.size() == 1 ) m_canRead.set_state( true );
 		}
 
@@ -26,11 +22,9 @@ namespace pfc {
 			m_eof = true;
 			m_canRead.set_state(true);
 		}
-
         bool wait_read( double timeout ) {
             return m_canRead.wait_for( timeout );
         }
-
         eventHandle_t get_event_handle() {
             return m_canRead.get_handle();
         }
@@ -108,15 +102,10 @@ namespace pfc {
 			m_canWrite.set_state(true);
 		}
 
-		void put(obj_t const & obj) {
+		template<typename arg_t>
+		void put(arg_t && obj) {
 			mutexScope guard(m_mutex);
-			m_list.push_back(obj);
-			if (m_list.size() == 1) m_canRead.set_state(true);
-			refreshCanWrite();
-		}
-		void put(obj_t && obj) {
-			mutexScope guard(m_mutex);
-			m_list.push_back(std::move(obj));
+			m_list.push_back(std::forward<arg_t>(obj));
 			if (m_list.size() == 1) m_canRead.set_state(true);
 			refreshCanWrite();
 		}

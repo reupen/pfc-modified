@@ -79,10 +79,11 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pfc.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>pfc-lite.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
@@ -102,12 +103,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pfc.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>pfc-lite.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
     <ResourceCompile>
@@ -126,9 +128,10 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pfc.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>pfc-lite.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
@@ -147,11 +150,12 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pfc.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>pfc-lite.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <OmitFramePointers>false</OmitFramePointers>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
@@ -168,6 +172,7 @@
     <ClInclude Include="autoref.h" />
     <ClInclude Include="avltree.h" />
     <ClInclude Include="base64.h" />
+    <ClInclude Include="bigmem.h" />
     <ClInclude Include="binary_search.h" />
     <ClInclude Include="bit_array.h" />
     <ClInclude Include="bit_array_impl.h" />
@@ -179,45 +184,58 @@
     <ClInclude Include="cmd_thread.h" />
     <ClInclude Include="com_ptr_t.h" />
     <ClInclude Include="cpuid.h" />
+    <ClInclude Include="debug.h" />
     <ClInclude Include="event.h" />
     <ClInclude Include="filehandle.h" />
+    <ClInclude Include="fixed_map.h" />
+    <ClInclude Include="fpu.h" />
     <ClInclude Include="guid.h" />
-    <ClInclude Include="instance_tracker.h" />
+    <ClInclude Include="instance_tracker_legacy.h" />
     <ClInclude Include="int_types.h" />
     <ClInclude Include="iterators.h" />
+    <ClInclude Include="killswitch.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="lockless.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="memalign.h" />
+    <ClInclude Include="mem_block.h" />
     <ClInclude Include="nix-objects.h" />
     <ClInclude Include="notifyList.h" />
+    <ClInclude Include="once.h" />
     <ClInclude Include="order_helper.h" />
     <ClInclude Include="other.h" />
     <ClInclude Include="pathUtils.h" />
     <ClInclude Include="pfc-fb2k-hooks.h" />
+    <ClInclude Include="pfc-lite.h" />
     <ClInclude Include="pfc.h" />
+    <ClInclude Include="platform-objects.h" />
     <ClInclude Include="pocket_char_ops.h" />
     <ClInclude Include="pool.h" />
-    <ClInclude Include="pp-gettickcount.h" />
     <ClInclude Include="pp-winapi.h" />
     <ClInclude Include="primitives.h" />
     <ClInclude Include="primitives_part2.h" />
     <ClInclude Include="ptrholder.h" />
     <ClInclude Include="ptr_list.h" />
-    <ClInclude Include="range_based_for.h" />
     <ClInclude Include="rcptr.h" />
     <ClInclude Include="ref_counter.h" />
+    <ClInclude Include="SmartStrStr.h" />
     <ClInclude Include="sort.h" />
     <ClInclude Include="splitString.h" />
+    <ClInclude Include="splitString2.h" />
     <ClInclude Include="stdsort.h" />
-    <ClInclude Include="string8_impl.h" />
+    <ClInclude Include="string-compare.h" />
+    <ClInclude Include="string-conv-lite.h" />
+    <ClInclude Include="string-interface.h" />
+    <ClInclude Include="string-lite.h" />
+    <ClInclude Include="string-part.h" />
     <ClInclude Include="string_base.h" />
     <ClInclude Include="string_conv.h" />
     <ClInclude Include="string_list.h" />
-    <ClInclude Include="stringNew.h" />
+    <ClInclude Include="string_simple.h" />
     <ClInclude Include="suppress_fb2k_hooks.h" />
     <ClInclude Include="syncd_storage.h" />
     <ClInclude Include="synchro.h" />
+    <ClInclude Include="synchro_nix.h" />
     <ClInclude Include="synchro_win.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="threads.h" />
@@ -232,6 +250,7 @@
     <ClCompile Include="audio_math.cpp" />
     <ClCompile Include="audio_sample.cpp" />
     <ClCompile Include="base64.cpp" />
+    <ClCompile Include="bigmem.cpp" />
     <ClCompile Include="bit_array.cpp" />
     <ClCompile Include="bsearch.cpp">
       <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">EnableFastChecks</BasicRuntimeChecks>
@@ -242,6 +261,7 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="cpuid.cpp" />
+    <ClCompile Include="crashWithMessage.cpp" />
     <ClCompile Include="filehandle.cpp" />
     <ClCompile Include="guid.cpp">
       <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">EnableFastChecks</BasicRuntimeChecks>
@@ -274,6 +294,7 @@
     </ClCompile>
     <ClCompile Include="printf.cpp" />
     <ClCompile Include="selftest.cpp" />
+    <ClCompile Include="SmartStrStr.cpp" />
     <ClCompile Include="sort.cpp">
       <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">EnableFastChecks</BasicRuntimeChecks>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Disabled</Optimization>
@@ -282,6 +303,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="splitString2.cpp" />
     <ClCompile Include="stdafx.cpp">
       <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">EnableFastChecks</BasicRuntimeChecks>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -294,9 +316,11 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="string-compare.cpp" />
+    <ClCompile Include="string-conv-lite.cpp" />
+    <ClCompile Include="string-lite.cpp" />
     <ClCompile Include="string_base.cpp" />
     <ClCompile Include="string_conv.cpp" />
-    <ClCompile Include="stringNew.cpp" />
     <ClCompile Include="threads.cpp" />
     <ClCompile Include="timers.cpp" />
     <ClCompile Include="utf8.cpp">
