@@ -274,9 +274,7 @@ string validateFileName(string name, bool allowWC, bool preserveExt, charReplace
 	// replaceIllegalNameChars may remove chars exposing illegal prefix/suffix chars
 	name = replaceIllegalNameChars(name, allowWC, replaceIllegalChar);
 	if (name.length() > 0 && !allowWC) {
-		pfc::string8 lstIllegal = " ";
-		if (!preserveExt) lstIllegal += ".";
-
+		const char* lstIllegal = preserveExt ? "" : " .";
 		name = trailingSanity(name, preserveExt, lstIllegal);
 	}
 
