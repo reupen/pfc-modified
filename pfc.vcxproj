@@ -747,6 +747,7 @@
     <ClInclude Include="cpuid.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="event.h" />
+    <ClInclude Include="event_std.h" />
     <ClInclude Include="filehandle.h" />
     <ClInclude Include="filetimetools.h" />
     <ClInclude Include="fixed_map.h" />
@@ -785,6 +786,7 @@
     <ClInclude Include="SmartStrStr.h" />
     <ClInclude Include="sort.h" />
     <ClInclude Include="sort2.h" />
+    <ClInclude Include="sortstring.h" />
     <ClInclude Include="splitString.h" />
     <ClInclude Include="splitString2.h" />
     <ClInclude Include="stdsort.h" />
