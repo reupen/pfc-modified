@@ -38,6 +38,9 @@ static const bool haveSSE41 = pfc::query_cpu_feature_set(pfc::CPU_HAVE_SSE41);
 
 #if allowAVX
 #include <immintrin.h> // _mm256_set1_pd
+#if __clang__
+#include <avxintrin.h>
+#endif
 #endif
 
 #endif // end SSE
@@ -63,6 +66,14 @@ static const bool haveSSE41 = pfc::query_cpu_feature_set(pfc::CPU_HAVE_SSE41);
 #if defined( AUDIO_MATH_ARM64 ) && !defined( __ANDROID__ )
 // Don't do Neon float64 on Android, crashes clang from NDK 25
 #define AUDIO_MATH_NEON_FLOAT64
+#endif
+
+#ifdef __clang__
+#define TARGET_AVX __attribute__((target("avx")))
+#define TARGET_SSE41 __attribute__((target("sse4.1")))
+#else 
+#define TARGET_AVX
+#define TARGET_SSE41
 #endif
 
 template<typename float_t> inline static float_t noopt_calculate_peak(const float_t *p_src, t_size p_num)
@@ -491,7 +502,7 @@ inline static void convert_to_16bit_sse2(const double* p_source, t_size p_count,
     noopt_convert_to_16bit(p_source, rem, p_output, p_scale);
 }
 #if allowAVX
-inline static void avx_convert_to_16bit(const double* p_source, size_t p_count, int16_t* p_output, double p_scale) {
+TARGET_AVX inline static void avx_convert_to_16bit(const double* p_source, size_t p_count, int16_t* p_output, double p_scale) {
     size_t num = p_count / 8;
     size_t rem = p_count % 8;
     auto mul = _mm256_set1_pd(p_scale);
@@ -683,7 +694,7 @@ inline void sse_convert_from_int32(const int32_t* source, size_t count, double* 
     }
 }
 #if allowAVX
-inline void convert_from_int16_avx(const t_int16* p_source, t_size p_count, double* p_output, double p_scale) {
+TARGET_AVX inline void convert_from_int16_avx(const t_int16* p_source, t_size p_count, double* p_output, double p_scale) {
     while (!pfc::is_ptr_aligned_t<32>(p_output) && p_count) {
         *(p_output++) = (double)*(p_source++) * p_scale;
         p_count--;
@@ -999,7 +1010,7 @@ namespace pfc {
     }
 #ifdef AUDIO_MATH_SSE
 #if allowAVX
-    static void f64_to_i24_avx(double const* in, size_t n, uint8_t* out, double scale) {
+    TARGET_AVX static void f64_to_i24_avx(double const* in, size_t n, uint8_t* out, double scale) {
         const __m128i pi0 = _mm_set_epi8(-128, -128, -128, -128, 14, 13, 12, 10, 9, 8, 6, 5, 4, 2, 1, 0);
         const __m128i pi1 = _mm_set_epi8(4, 2, 1, 0, -128, -128, -128, -128, 14, 13, 12, 10, 9, 8, 6, 5);
         const __m128i pi2 = _mm_set_epi8(9, 8, 6, 5, 4, 2, 1, 0, -128, -128, -128, -128, 14, 13, 12, 10);
@@ -1048,7 +1059,7 @@ namespace pfc {
         convert_to_int24_noopt(in, n, out, scale);
     }
 #endif // allowAVX
-    static void f64_to_i24_sse41(double const* in, size_t n, uint8_t* out, double scale) {
+    TARGET_SSE41 static void f64_to_i24_sse41(double const* in, size_t n, uint8_t* out, double scale) {
         const __m128i pi0 = _mm_set_epi8(-128, -128, -128, -128, 14, 13, 12, 10, 9, 8, 6, 5, 4, 2, 1, 0);
         const __m128i pi1 = _mm_set_epi8(4, 2, 1, 0, -128, -128, -128, -128, 14, 13, 12, 10, 9, 8, 6, 5);
         const __m128i pi2 = _mm_set_epi8(9, 8, 6, 5, 4, 2, 1, 0, -128, -128, -128, -128, 14, 13, 12, 10);
@@ -1107,7 +1118,8 @@ namespace pfc {
 
         convert_to_int24_noopt(in, n, out, scale);
     }
-    static void f32_to_i24_sse41(float const* in, size_t n, uint8_t* out, float scale) {
+
+    TARGET_SSE41 static void f32_to_i24_sse41(float const* in, size_t n, uint8_t* out, float scale) {
         const __m128i pi0 = _mm_set_epi8(-128, -128, -128, -128, 14, 13, 12, 10, 9, 8, 6, 5, 4, 2, 1, 0);
         const __m128i pi1 = _mm_set_epi8(4, 2, 1, 0, -128, -128, -128, -128, 14, 13, 12, 10, 9, 8, 6, 5);
         const __m128i pi2 = _mm_set_epi8(9, 8, 6, 5, 4, 2, 1, 0, -128, -128, -128, -128, 14, 13, 12, 10);
